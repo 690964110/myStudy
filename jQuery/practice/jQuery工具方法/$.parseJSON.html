@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+//{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }
+// 我们使用 JSON.parse() 方法处理以上数据，将其转换为 JavaScript 对象：
+// var obj = JSON.parse('{ "name":"runoob", "alexa":10000, "site":"www.runoob.com" }');
+// $.parseJSON 和 JSON.parse 相同
+
+//json字符串必须符合格式
+var json = '{"name" : 123,"b" : "str","c" :true}';
+var a = $.parseJSON(json);
+console.log(a);
+</script>
+</html>

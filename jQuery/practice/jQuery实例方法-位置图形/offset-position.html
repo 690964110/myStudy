@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            position: absolute;
+            width: 300px;
+            height:300px;
+            background: red;
+            left: 100px;
+            top: 100px;
+        }
+        .wrapper .demo{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: orange;
+            left: 50px;
+            top: 50px;
+        }
+        body{
+            width:3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="demo"></div>
+    </div>    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //原生offset，获取有定位的父级
+    //offset 永远相对文档定位，可以进行赋值 left top
+    // console.log($('.demo').offset())
+    // $('.demo').offset({top:200,left:300});
+
+
+    //--------------position--------------
+    //相对于有定位的父级来进行定位 不能进行赋值
+    //没有有定位的父级，就相当于文档进行定位
+    // console.log($('.demo').position());
+
+    //--------------scrollTop,scrollLeft---------
+    (window).scrollTop();//纵向滚动条数值
+    $(window).scrollTop(1100);//可以设置但不能为字符串
+    (window).scrollLeft();//横向滚动条的数值
+    $(window).scrollLeft(1100);
+    
+</script>
+</html>

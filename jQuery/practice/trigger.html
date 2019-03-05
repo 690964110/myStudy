@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="demo"></div>
+</body>
+<script src="../js/jquery.js"></script>
+<script>
+    $('.demo').on('click',function(e,a,b,c,d){
+        console.log('click',a,b,c,d);
+    })
+    $('.demo').trigger('click',[10,20,30,40]);
+    //自定义事件，只有通过trigger来触发
+    $('.demo').on('pageLoad',function(e,a,b,c,d){
+        console.log(a,b,c,d);
+    })
+    $('.demo').trigger('pageLoad',[10,20,30,40]);
+    $('.demo').hover(function(){
+        console.log('enter');
+    },function(){
+        console.log('leave');
+    })
+</script>
+</html>

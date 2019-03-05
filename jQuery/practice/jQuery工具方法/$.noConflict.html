@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="demo"></div>    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+//防止冲突，可以将$变成你给的来调用
+var $C = $.noConflict();
+$C('.demo').css({width: 200, height:200,backgroundColor: 'red'})
+
+</script>
+</html>
