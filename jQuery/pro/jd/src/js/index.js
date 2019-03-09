@@ -443,10 +443,72 @@ function renderMenuContent(data){
     $('#menu-content').append(tabsUl).append(itemContent);
 }
 
+function bindeServiceEvent(){
+    $('.service-frame').on('mouseenter', function(){
+        $('.j-services').addClass('service-expend');
+        $(this).find('span').css({
+            color: 'red',
+            borderBottom: '2px solid red'
+        }).on('mouseleave',function(){
 
+           $(this).css({
+            color: '#666',
+            borderBottom: 'none'
+        })
+        })
+    })
+    $('.close').on('click', function(){
+        $('.j-services').removeClass('service-expend');
+    })
+};
+function getData(data){
+    $('#result-content').html('');
+    $('#result-content').show();
+    renderSearchDom(data.result);
+}
 
+function renderSearchDom(data){
+    console.log(data);
+   data.forEach(function(item, index){
+    $('<li>' + item[0] +'</li>').appendTo($('#result-content'));
+   })
+    
+}
 
+var searchTimer = null;
+function searchEvent(){
+    $('.search-inp').on('keyup', function(e){
+        var val = this.value;
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(function(){
+            $.ajax({
+                type:'GET',
+                url:'https://suggest.taobao.com/sug',
+                data:{
+                    code: 'utf-8',
+                    q: val,
+                    callback: 'getData'
+                },
+                dataType: 'jsonp'
+            })
+        },300)
+        
+    })
+    // .on('focus',function(e){
+    //     if(this.value){
+    //         $('#result-content').show();
+    //     }
+    // })
+    $('.search-bar').on('mouseleave', function(e){
+        $('#result-content').hide();
+    });
+    $('#result-content > ul').on('click', 'li', function(e){
+        $('.search-inp').val($(this).text());
+    })
+}
 
 
 createMenuDom(menuList);
 bindMenuEvent();
+bindeServiceEvent();
+searchEvent();

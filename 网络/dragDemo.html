@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+
+    var cookieManage = {
+        setCookie : function(name, value, time){
+            document.cookie = name + '=' + value + '&max-age=' + time;
+            return this;
+        },
+        removeCookie : function(name){
+            return this.setCookie(name,'',-1);
+        },
+        getCookie : function(name, callback){
+            var allCookie = document.cookie.split('; ');
+            var aLen = allCookie.length;
+            for(var i = 0; i < aLen; i++){
+                var itemCookie = allCookie[i].split('=');
+                if(itemCookie[0] == name){
+                    callback(itemCookie[1]);
+                    return this;
+                }
+            }
+            callback(undefined);
+            return this;
+        }
+    }
+    cookieManage.setCookie('color', 'red', 1000)
+                .getCookie('color',function(data){
+                             console.log(data);
+                }).removeCookie('color')
+                            .getCookie('color');
+    var drag = {
+        init: function(Dom){
+            this.dom = Dom;
+            this.bindEvent();
+        },
+        bindEvent: function(dom){
+            this.dom.onmousedown = this.mouseDown;
+        },
+        mouseDown: function(){
+            document.onmousemove = this.mouseMove;
+            document.onmouseup = this.mouseUp;
+        },
+        mouseMove: function(){
+
+        },
+        mouseUp: function(){
+            
+        }
+    }
+    drag.init();
+
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject('Microsoft.XMLHttp');
+    }
+
+    xhr.open('GET', 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieList', true);
+
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+    }
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject('Microsoft.XMLHttp');
+    }
+
+    xhr.open('POST', 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/power', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send('username=cst&password=123123');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        }
+    }
+
+    function ajax(config) {
+        config.type = config.type.toUpperCase()
+        var data = "";
+        for (var prop in config.data) {
+            data +=  + "&" + prop + "=" + config.data[prop];
+        }
+        data.replace('&','');
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject('Microsoft.XMLHttp');
+        }
+        if (config.type == 'GET') {
+            if(data != ""){
+                xhr.open(config.type || 'GET', config.url +"?"+data, config.async || true);
+            }else{
+                xhr.open(config.type || 'GET', config.url , config.async || true);
+            }
+           
+            xhr.send();
+        } else if (config.type == "POST") {
+            xhr.open(config.type, config.url, config.async || true);
+            xhr.setRequestHeader('Content-type', config.contentType ||'application/x-www-form-urlencoded' );
+            xhr.send(data);
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    config.success(JSON.parse(xhr.responseText));
+                    
+                }
+            }
+        }
+    }
+    ajax({
+        type: 'get',
+        url: 'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/movieList',
+        success: function(res){
+            console.log(res);
+        }
+        
+    })
+    ajax({
+        type: 'post',
+        url:'https://easy-mock.com/mock/5c09f40d3c098813c612cce6/movie/power',
+        data:{
+            username:'cst',
+            password: '123123'
+        },
+        success: function(res){
+            console.log(res);
+        }
+    })
+
+
+</script>
+
+</html>
