@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        div{
+        div {
             width: 100px;
             height: 100px;
             background-color: orange;
@@ -16,58 +17,73 @@
         }
     </style>
 </head>
+
 <body>
     <div></div>
 </body>
 <script>
-
+    var dg = 'dg hai shi ni deng ge';
+var oDom = document.getElementsByTagName('div')[0];
     var cookieManage = {
-        setCookie : function(name, value, time){
-            document.cookie = name + '=' + value + '&max-age=' + time;
+        setCookie: function (name, value, time) {
+            document.cookie = name + '=' + value + ';max-age=' + time;
             return this;
         },
-        removeCookie : function(name){
-            return this.setCookie(name,'',-1);
+        removeCookie: function (name) {
+            return this.setCookie(name, '', -1);
         },
-        getCookie : function(name, callback){
+        getCookie: function (name, callback) {
             var allCookie = document.cookie.split('; ');
+            console.log(allCookie);
             var aLen = allCookie.length;
-            for(var i = 0; i < aLen; i++){
+            for (var i = 0; i < aLen; i++) {
                 var itemCookie = allCookie[i].split('=');
-                if(itemCookie[0] == name){
+                if (itemCookie[0] == name) {
                     callback(itemCookie[1]);
                     return this;
                 }
             }
-            callback(undefined);
+            callback('undefined');
             return this;
         }
     }
-    cookieManage.setCookie('color', 'red', 1000)
-                .getCookie('color',function(data){
-                             console.log(data);
-                }).removeCookie('color')
-                            .getCookie('color');
+    
     var drag = {
-        init: function(Dom){
+        init: function (Dom) {
             this.dom = Dom;
+            var _this = this;
             this.bindEvent();
-        },
-        bindEvent: function(dom){
-            this.dom.onmousedown = this.mouseDown;
-        },
-        mouseDown: function(){
-            document.onmousemove = this.mouseMove;
-            document.onmouseup = this.mouseUp;
-        },
-        mouseMove: function(){
+            cookieManage.getCookie('newLeft', function(data){
+                data && (_this.dom.style.left = data +'px');
+            }).getCookie('newTop', function(data){
+                data && (_this.dom.style.top = data +'px');
+            })
 
         },
-        mouseUp: function(){
-            
+        bindEvent: function (dom) {
+            this.dom.onmousedown = this.mouseDown.bind(this);
+        },
+        mouseDown: function (e) {
+            document.onmousemove = this.mouseMove.bind(this);
+            document.onmouseup = this.mouseUp.bind(this);
+            this.disX = e.clientX - this.dom.offsetLeft;
+            this.disY = e.clientY - this.dom.offsetTop;
+        },
+        mouseMove: function (e) {
+            this.newLeft = e.clientX - this.disX;
+            this.newTop = e.clientY - this.disY;
+            this.dom.style.left = this.newLeft + 'px';
+            this.dom.style.top = this.newTop + 'px';
+        },
+        mouseUp: function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+            cookieManage.setCookie('newLeft',this.newLeft, 10000)
+                        .setCookie('newTop', this.newTop, 10000);
         }
     }
-    drag.init();
+    drag.init(oDom);
 
 </script>
+
 </html>
