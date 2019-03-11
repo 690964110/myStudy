@@ -1,0 +1,38 @@
+.wrapper{
+    width: 571px;
+    height: 321px;
+    margin: 200px auto 0px;
+    border: 1px solid #eee;
+    position: relative;
+    /* overflow: hidden; */
+}
+.wrapper div a{
+    
+    text-decoration: none;
+    background-color: #999;
+    color: #fff;
+    padding: 0 78px;
+    height: 20px;
+    line-height: 20px;
+}
+.wrapper div a:not(:last-of-type){
+    border-right: 1px solid black;
+}
+ul{
+    list-style: none;
+    position: relative;
+}
+ul li{
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 301px;
+}
+ul li img{
+    width:100%;
+    height: 100%;
+}
+ul li:not(:target){
+    display: none;
+}

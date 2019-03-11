@@ -1,0 +1,60 @@
+/* RelnationShips Selector */
+/* E+F */
+/* 下一个是满足条件的兄弟元素节点 */
+/* div + p{
+    background-color: orange;
+}
+div + .demo{
+    color: red;
+} */
+
+/* E ~ F */
+/* div后面满足条件的兄弟元素节点 */
+/* div ~ p{
+    background-color: green;
+} */
+
+/* -------------Attribute Selectors-------------- */
+/* 选中独立的a（单独一个a ， a ，a b, csd d a);类似于class选择 */
+/* div[data ~='a']{
+    background-color: orange;
+} */
+/* ------------------------ */
+/* 包含a和a-的元素被选中 */
+/* div[class |= 'a']{
+    background-color: orange;
+} */
+/* 以a开头的 */
+/* div[class ^= 'a']{
+    background-color: red;
+} */
+/* 以t结尾的 */
+/* div[class$='test']{
+    background-color: orange;
+} */
+/* 只要存在就可以选中 */
+/* div[class *='-']{
+    background-color: orange;
+} */
+/* -------------Pseudo-Element Selectors-------------- */
+/* 选中input的placeholder并设置样式 */
+/* input::placeholder{
+    color: orange;
+    font-size: 5px;
+}
+/* 兼容性写法 */
+/* input::-webkit-placeholder{
+    color: orange;
+    font-size: 5px;
+}  */
+/* ------------------------------ */
+/* 选中后的效果 */
+div:nth-of-type(1)::selection{
+    color: #fff;
+    background-color:#fcc;
+    text-shadow: 3px 5px black;
+}
+div:nth-of-type(2)::selection{
+    color: yellow;
+    background-color:green;
+}
