@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,4 +43,50 @@
     });
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/fullpage.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <h3>第一屏</h3>
+        </div>
+        <div class="section">
+            <h3>第二屏</h3>
+        </div>
+        <div class="section">
+            <div class="slide"> 幻灯片 1 </div>
+            <div class="slide"> 幻灯片 2 </div>
+            <div class="slide"> 幻灯片 3 </div>
+            <div class="slide"> 幻灯片 4 </div>
+        </div>
+        <div class="section">
+            <h3>第四屏</h3>
+        </div>
+    </div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script src="./js/fullpage.js"></script>
+<script>
+    $('.wrapper').fullpage({
+        //锚点索引
+        afterLoad: function (anchor, index) {
+            console.log('load' + index.index);
+        },
+        onLeave: function (index) {
+            console.log('leave' + index.index);
+        }
+    });
+</script>
+
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

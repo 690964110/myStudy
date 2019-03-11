@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,4 +34,41 @@
         $(this).next().hide(3000,'swing');
     })
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <p>Rose</p>
+        <ul>
+            <li>nba状元秀</li>
+            <li>最年轻mvp</li>
+            <li>涅槃重生</li>
+        </ul>
+    </div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //会还原成默认值，如果设置了就会还原成设置过的
+    //填了参数3000，width,height,opacity padding margin 渐渐出现
+    //swing先快后慢，liner匀速
+    $('p').on('mouseenter',function(){
+        $(this).next().show(3000,'swing');
+    })
+    $('p').on('mouseleave',function(){
+        $(this).next().hide(3000,'swing');
+    })
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

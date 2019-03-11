@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <iframe src="./iframeChild.html" frameborder="1" name="child"></iframe>
+</body>
+<script>
+
+    // var oldAge = 18;
+    // var oIframe = document.getElementsByTagName('iframe')[0];
+    // //iframe加载完成触发的事件
+    // oIframe.onload = function(){
+    //     //拿子页面的值
+    //     console.log(oIframe.contentWindow.age);
+    // }
+    // var oldAge = 55;
+
+
+
+
+    //---------------------- iframe跨域-----------------------
+    var oIframe = document.getElementsByTagName('iframe')[0];
+    var oldAge = 55;
+    var oSrc = oIframe.src;
+    document.onclick = function () {
+        oIframe.src = oSrc + '#' + ++oldAge;
+    }
+
+    //------------------------父页面拿子页面的值（跨域）------------------
+    var flag = true;
+    oIframe.onload = function () {
+        //当子页面iframe加载完成，换一个同源的iframe就可以去到上一个子页面的值
+        if (flag) {
+            oIframe.src = 'xl.html';
+            flag = false;
+        } else {
+            oIframe.contentWindow.name;
+        }
+
+    }
+
+    // 两个页面主域相同，子域不同的时候，可以借助
+    // document.domain = '58.com';
+    // 来使用
+
+
+</script>
+
+</html>

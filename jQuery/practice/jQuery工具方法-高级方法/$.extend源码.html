@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,4 +49,56 @@ var obj2 = {
 //深度克隆
 // $.extend(true,obj1,obj2);
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    $.extend({
+        a : function(){
+            console.log('a');
+        },
+        b : function(){
+            console.log('b');
+        }
+    });
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+//第一点，jquery.fn = jquery.prototype
+//扩展方法
+// 把这个方法拿去源码走一次，就能理解了
+// $.extend({
+//     a : function(){
+//         console.log('a');
+//     },
+//     b : function(){
+//         console.log('b');
+//     }
+// });
+
+
+//浅克隆 son被防止 Prevent never-ending loop 给continue掉了
+var obj1 = {
+    name: 'zhangsan',
+
+}
+var obj2 = {
+    name: 'lisi',
+    age: 10,
+    son : {
+        name: 'xiaoli',
+        age: 5
+    }
+}
+// $.extend(obj1,obj2);
+//深度克隆
+// $.extend(true,obj1,obj2);
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

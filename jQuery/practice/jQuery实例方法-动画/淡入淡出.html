@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,4 +72,79 @@
     })
 
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <p>Rose</p>
+        <ul>
+            <li>nba状元秀</li>
+            <li>最年轻mvp</li>
+            <li>涅槃重生</li>
+        </ul>
+    </div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //淡入淡出。参数和toggle一样
+   $('p').on('click',function(){
+        if($(this).next().css('display') == 'none'){
+            $(this).next().fadeIn(2000);
+        }else{
+            $(this).next().fadeOut(2000);
+        }
+    })
+    $('p').on('click',function(){
+        if($(this).next().css('display') == 'none'){
+            $(this).next().fadeIn(2000);
+        }else{
+            $(this).next().fadeOut(2000);
+        }
+    })
+
+    //fadeTo 淡入淡出到哪
+    $('p').on('click',function(){
+        if($(this).next().css('display') == 'none'){
+            $(this).next().fadeTo(2000, 0.6, 'swing',function(){
+                console.log('over1')
+            });
+        }else{
+            $(this).next().fadeTo(2000, 0.1, 'swing',function(){
+                console.log('over2')
+            });
+        }
+    })
+
+
+    //卷入卷出
+    $('p').on('click',function(){
+        // if($(this).next().css('display') == 'none'){
+        //     $(this).next().slideDown(2000, 'swing',function(){
+        //         console.log('over1')
+        //     });
+        // }else{
+        //     $(this).next().slideUp(2000, 'swing',function(){
+        //         console.log('over2')
+        //     });
+        // }
+        
+        $(this).next().slideToggle();
+    })
+
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

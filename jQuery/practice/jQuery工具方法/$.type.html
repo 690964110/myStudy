@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,4 +42,49 @@
     console.log($.isWindow(window));//true
 
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    // 原生：typeof();
+    //判断里面的数据是什么类型
+    //undefined string number boolean object function
+    // typeof(null); //返回object
+
+    //$.type() 里面的数据是什么 
+    //返回的都是字符串
+    console.log($.type(undefined));//undefined
+    console.log($.type('abc'));//string 
+    console.log($.type(123));//number
+    console.log($.type(true));//boolean
+    console.log($.type(function(){}));//function
+    console.log($.type(null));//null
+    console.log($.type({}));//object
+    console.log($.type([1,2,3,4]));//array
+    console.log($.type(new Date()));//date
+    console.log($.type(new Number()) + typeof(new Number()));//number
+    console.log($.type(new Person()));//object
+    function Person(){}
+
+    //----------$.isArray-------------
+    //判断是否是数组
+    console.log($.isArray([1,2,3,4]));//true
+    //-----------$.isFunction()--------
+    console.log($.isFunction((function(){})));//true
+    //-----------$.isWindow-------------
+    console.log($.isWindow(window));//true
+
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

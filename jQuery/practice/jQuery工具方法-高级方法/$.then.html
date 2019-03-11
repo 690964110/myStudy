@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,4 +97,104 @@
 
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //$.then 简化注册的写法
+    // var df = $.Deferred();
+    // df.then(function () {
+    //     console.log('done1');
+    // }, function () {
+    //     console.log('fail1');
+    // }, function () {
+    //     console.log('progress1');
+    // }).then(function () {
+    //     console.log('done2');
+    // }, function () {
+    //     console.log('fail2');
+    // }, function () {
+    //     console.log('progress2');
+    // })
+
+
+    function createScore() {
+        var df = $.Deferred();
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 60) {
+                df.resolve('congradulation!!!!');
+            } else if (score < 40) {
+                df.reject('get out');
+            } else {
+                df.notify('go on');
+            }
+           
+        }, 1200)
+        return df.promise();
+    }
+    var df = createScore();
+    // df.then(function(ms){
+    //     console.log('oh yeah'+'---'+ms)
+    //     return 'ok';
+    // },function(ms){
+    //     console.log('gg'+'---'+ms)
+    //     return 'no';
+    // },function(ms){
+    //     console.log('go ib'+'---'+ms)
+    //     return 'what';
+    // }).then(function(param){
+    //     console.log(param+'泡妞');
+    // },function(param){
+    //     console.log(param+'泡个锤子');
+    // },function(param){
+    //     console.log(param+'泡妞');
+    // })
+
+    //如果返回的是延迟对象，下次的.then就是新的延迟对象
+    df.then(function(ms){
+        console.log('oh yeah'+'---'+ms)
+        var df = $.Deferred();
+        setInterval(function(){
+            df.resolve('duyi resolve');
+        },1500);
+        return df.promise();
+    },function(ms){
+        console.log('gg'+'---'+ms)
+        var df = $.Deferred();
+        setInterval(function(){
+            df.resolve('duyi reject ');
+        },1500);
+        return df.promise();
+    },function(ms){
+        console.log('go ib'+'---'+ms)
+        var df = $.Deferred();
+        setInterval(function(){
+            df.resolve('duyi progress');
+        },1500);
+        return df.promise();
+    }).then(function(param){
+        console.log(param);
+    },function(param){
+        console.log(param);
+    },function(param){
+        console.log(param);
+    })
+
+
+</script>
+
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

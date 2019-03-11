@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,4 +134,141 @@
 
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<!-- 实际场景 -->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</body>
+<script src="./js/jquery.js"></script>
+<script>
+    //--------------------------------------------------------------
+    // <div class="demo"></div>
+    // <div class="demo"></div>
+    // <div class="demo"></div>   
+    //----------------get(获取的是原生dom对象，不能使用jquery的方法)---------------------
+    // 0 1 2 3          从前往后取
+    // -1 -2 -3         从后往前取
+    // null undefined   获取全部
+    console.log($('.demo').get());
+
+    //------------------eq(获取jquery对象，获取某一个)-----------------------
+    //eq可以选段给样式操作
+    //不填什么都没有
+
+    //--------------------------------------------------------------
+    //------------------find找下面的对象--------------------------------
+    // <div class="wrapper">
+    //     <ul>
+    //         <li></li>
+    //         <li></li>
+    //         <li></li>
+    //         <li></li>
+    //         <li></li>
+    //     </ul>
+    // </div>
+    // $('.wrapper')
+    //     .css({position : 'relative'})
+    //         .find('ul')
+    //             .css({listStyle : none})
+    //                 .find('li')
+    //                     .css({color : 'red'});
+
+    //--------------------------------------------------------------
+    //------------------filter方法 not方法--------------------------------
+//     <div class="wrapper">
+//     <ul>
+//         <li></li>
+//         <li class="demo">2</li>
+//         <li></li>
+//         <li></li>
+//         <li class="demo">5</li>
+//     </ul>
+// </div>
+// <ul>
+//         <li></li>
+//         <li class="demo">2</li>
+//         <li></li>
+//         <li></li>
+//         <li class="demo">5</li>
+//     </ul>
+    //not和filter相反
+    // filter
+    // css selector jQuery
+    //function
+    $('.wrapper ul')
+        .find('li')
+            .filter('.demo')
+                .css({color : 'red'});//这种可以
+                //错误案例---------------
+    // $('.wrapper ul')
+    //     .filter('li:odd')
+    //         .css({color : 'red'});//这种方法会报错，不能去选择
+        //正确案例
+        // $('.wrapper ul')
+        //     .find('li')
+        //         .filter(':odd')
+        //             .css({color : 'red'});
+
+        $('.wrapper ul li')
+            .filter(function(index, ele){
+                // console.log(ele,this);
+                return index % 2 == 0;
+            }).css({color : 'green'});
+        
+
+    //--------------------------------------------------------------
+    //------------------------has方法--------------------------------
+//     <ul>
+//     <li>
+//         <ul>
+//             <li>1</li>
+//             <li>2</li>
+//             <li>3</li>
+//             <li>4</li>
+//         </ul>
+//     </li>
+//     <li></li>
+//     <li></li>
+//     <li></li>
+//     <li></li>
+// </ul>
+    $('li').has('ul').css({color : 'red'});
+
+    //--------------------------------------------------------------
+    //------------------------is--------------------------------
+//     <div class="wrapper">
+//     <span class="demo">span-1</span>
+//     <span class="demo">span-2</span>
+//     <p class="demo">p-1</p>
+//     <span class="demo">span-3</span>
+// </div>
+    var flag = $('.wrapper .demo').is('span');//返回boolean值
+    
+    $('ul').click(function(e){
+        if($(e.target).is('li')){
+            alert($(e.target).text());
+        }else{
+            alert($(this).text());
+        }
+    })
+
+</script>
+
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,4 +48,55 @@ cb.fire('oncememory');
 cb.add(c);
 cb.fire('oncememory');
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../../js/myjQuery.js"></script>
+<script>
+function a(ms){
+    console.log(ms);
+}
+function b(ms){
+    console.log(ms);
+}
+function c(){
+    console.log('c');
+}
+// var cb = $.myCallbacks();
+// cb.add(a);
+// cb.add(b);
+// cb.fire('null');
+// cb.add(c);
+// cb.fire('null');
+
+// var cb = $.myCallbacks('once');
+// cb.add(a);
+// cb.add(b);
+// cb.fire('once');
+// cb.fire('once');
+
+// var cb = $.myCallbacks('memory');
+// cb.add(a);
+// cb.add(b);
+// cb.fire('memory');
+// cb.add(c);
+// cb.fire('memory');
+
+var cb = $.myCallbacks('oncememory');
+cb.add(a);
+cb.add(b);
+cb.fire('oncememory');
+cb.add(c);
+cb.fire('oncememory');
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

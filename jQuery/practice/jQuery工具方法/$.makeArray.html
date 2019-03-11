@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,4 +48,55 @@
     //------------------------------------第三种方法--------------------------
     obj1 = [].slice.call(obj1,0);
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //第一种
+    //传一个类数组，变成数组
+    var obj = {
+        0 : 'a',
+        1 : 'b',
+        2 : 'c',
+        length : 3,
+        // slice : Array.prototype.slice
+    }
+    var arr = $.makeArray(obj);
+    console.log(arr);
+
+
+    //往数组里面加东西
+   var makeArr =  $.makeArray('4',obj);//返回的还是类数组
+//    makeArr   {0: "a", 1: "b", 2: "c", 3: "4", length: 4}
+
+    //添加东西，属于什么类型取决于后面那个
+    var test = [1,2,3,4];
+    // makeArr = $.makeArray(obj,test);
+    console.log(makeArr);//[1, 2, 3, 4, "a", "b", "c", "4"]
+    makeArr = $.makeArray(test,obj);
+    console.log(makeArr);//{0: "a", 1: "b", 2: "c", 3: "4", 4: 1, 5: 2, 6: 3, 7: 4, length: 8}
+    //---------------------第二种-------------------------------
+    var obj1 = {
+        0 : 'a',
+        1 : 'b',
+        2 : 'c',
+        length : 3,
+        slice : Array.prototype.slice
+    }
+    var arr1 = obj1.slice();//也可以变成数组
+
+    //------------------------------------第三种方法--------------------------
+    obj1 = [].slice.call(obj1,0);
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

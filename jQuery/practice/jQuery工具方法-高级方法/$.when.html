@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,4 +70,77 @@
     }
 </script>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //参数可以是一个或者多个延迟对象
+    //返回值是promise对象
+    //如果一个失败则走fail，全成功走done
+
+    $.when(createScore1, createScore2, createScore3).then(function () {
+        console.log('done');
+    }, function () {
+        console.log('fail');
+    })
+    function createScore1() {
+        var df = $.Deferred();
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 60) {
+                df.resolve('congradulation!!!!');
+            } else if (score < 40) {
+                df.reject('get out');
+            } else {
+                df.notify('go on');
+            }
+
+        }, 1200)
+        return df.promise();
+    }
+    function createScore2() {
+        var df = $.Deferred();
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 60) {
+                df.resolve('congradulation!!!!');
+            } else if (score < 40) {
+                df.reject('get out');
+            } else {
+                df.notify('go on');
+            }
+
+        }, 1200)
+        return df.promise();
+    }
+    function createScore3() {
+        var df = $.Deferred();
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 60) {
+                df.resolve('congradulation!!!!');
+            } else if (score < 40) {
+                df.reject('get out');
+            } else {
+                df.notify('go on');
+            }
+
+        }, 1200)
+        return df.promise();
+    }
+</script>
+
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

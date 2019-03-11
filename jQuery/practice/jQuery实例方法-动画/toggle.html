@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,4 +36,43 @@
         $(this).next().toggle(1000);
     })
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <p>Rose</p>
+        <ul>
+            <li>nba状元秀</li>
+            <li>最年轻mvp</li>
+            <li>涅槃重生</li>
+        </ul>
+    </div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    // $('p').on('click',function(){
+    //     if($(this).next().css('display') == 'none'){
+    //         $(this).next().show();
+    //     }else{
+    //         $(this).next().hide();
+    //     }
+    // })
+   //可用于是否展示，减少判断，还可以加时间，有动画效果
+    $('p').on('click',function(){
+        $(this).next().toggle(1000);
+    })
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>

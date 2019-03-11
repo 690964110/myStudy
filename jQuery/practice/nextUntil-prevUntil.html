@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,4 +35,42 @@
     }
 })
 </script>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <h1>水果</h1>
+    全选：<input type="checkbox">
+    baana：<input type="checkbox">
+    apple：<input type="checkbox">
+    orange：<input type="checkbox">
+    <h1>nba</h1>
+    全选：<input type="checkbox">
+    Rose：<input type="checkbox">
+    Curry：<input type="checkbox">
+    James：<input type="checkbox">
+    <input type="button" value="tijiao">
+</div>
+</body>
+<script src="../js/jquery.js"></script>
+<script>
+    //---------------nextAll()全选案例--------------------------
+    //两个限制条件，第一个到什么选择器为止
+    //第二个，选中的都是什么类型的按钮
+    $('h1').next().click(function(){
+    if($(this).prop('checked')){
+        $(this).nextUntil('h1','input[type="checkbox"]').prop('checked',true);
+    }else{
+        $(this).nextUntil('h1','input[type="checkbox"]').prop('checked',false);
+    }
+})
+</script>
+>>>>>>> 2c31271da4abb59f594c272f997dfa72a631001a
 </html>
