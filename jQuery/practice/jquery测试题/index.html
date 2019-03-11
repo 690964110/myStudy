@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 4000px;
+            height: 4000px;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -50px;
+            margin-right: -50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div><span></span></div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    // $('div').scroll(function(){
+    //     console.log( $(window).scrollTop);
+    //     $(this).css({
+    //         left: $(window).scrollTop+'200px',
+    //         marginLeft: $(window).scrollLeft+'200px'
+    //     })
+    // })
+    $('div').on('_leave', function () {
+        console.log('leave');
+    })
+    $('span').trigger('_leave');
+
+
+    function createScore() {
+        var df = $.Deferred();
+        setInterval(function () {
+            var score = Math.random() * 100;
+            if (score > 70) {
+                df.resolve('success');
+            } else if (score < 60) {
+                df.reject('bad score');
+            } else {
+                df.notify('go on');
+            }
+        }, 300)
+        return df.promise();
+    }
+    var df = createScore();
+    df.done(function (ms) {
+        console.log('god boy' + ms);
+    })
+    df.fail(function (ms) {
+        console.log('you not real fail' + ms);
+    })
+    df.progress(function (ms) {
+        console.log(ms);
+    })
+
+
+
+    function myQueue(){
+       var queueObj = this;
+        var queueName = arguments[0] || 'fx';
+        var addFunc = arguments[1] || null;
+        var len = arguments.length;
+        if(len == 1){
+            return queueObj[0][queueName];
+        }
+        queueObj[0][queueName]? queueObj[0][queueName].push(addFunc) : queueObj[0][queueName] = [addFunc];
+        return this;
+    }
+
+    function myDequeue(){
+        var self = this
+            , queueName = arguments[0] || 'fx'
+            , queueArr = this.myQueue(queueName)
+            , currFunc = queueArr.shift();
+            if(currFunc == undefined){
+                return;
+            }
+            var next = function(){
+                self.myDequeue(queueName);
+            }
+            currFunc(next);
+            return this;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

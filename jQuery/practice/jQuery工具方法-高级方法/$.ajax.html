@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //jquery $.ajax
+    //不管返回值
+
+    //参数obj
+    //属性url： 'https://easy-mock.com/mock/5c0b4a876162b83fe0a50cb9/person'
+    //type: 请求方式
+    //data:请求参数
+    //error: 请求错误代码
+    //complete: 不管请求对还是错都进行处理
+    //context：$('.wrapper')改变ajax里面this的指向
+    //timeout: 2000 ,多少时间后不请求/complete都会执行
+    //async: true异步，false 同步
+    //dataType: 'jsonp';jsonp的格式请求服务器、有些网站没写不准访问，涉及跨域
+
+    $.ajax({
+        url:'https://easy-mock.com/mock/5c0b4a876162b83fe0a50cb9/person'
+        ,type: 'GET'
+        ,data:{
+            
+        }
+        ,success: function(res){
+           $.each(res.data, function(index, ele){
+               console.log(ele);
+           })
+        }
+        ,error : function(e){
+            console.log(e.status,e.statusText);//404 "Not Found"
+        }
+        ,complete: function(){
+
+        }
+        ,context: $('.wrapper')//this的指向改为$('.wrapper')
+        ,timeout: 2000
+        ,async: true
+    })
+
+
+    //跨域的方法(请求别人服务器的东西会使用到跨域)
+    function deal(res){
+        console.log(res);
+    }
+
+    $.ajax({
+        url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+        type: 'GET',
+        data:{
+            wd: 'lol',
+            cb: 'deal'
+        },
+        dataType: 'jsonp'
+    })
+</script>
+</html>

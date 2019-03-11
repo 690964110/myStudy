@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: #f5f5f5;
+        }
+        /* .search-inp{
+            border: none;
+            width: 500px;
+            height: 35px;
+            outline: none;
+            padding: 4px 44px 4px 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+        .search-btn{
+            width:50px;
+            height: 35px;
+            padding: 4px;
+            background-color: red;
+            color: #fff;
+            border-color: transparent;
+            cursor: pointer;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- <input type="text" class='search-inp' placeholder="手机">
+        <button class="search-btn"> 搜索</button> -->
+    </div>
+</body>
+<script src="../tool/jquery-3.3.1.js"></script>
+<script src="./search.js"></script>
+<script>
+     $('.wrapper').VagueSearch({
+        placeholder:'请输入搜索条件',
+        inputWidth: '400',
+        inputHeight: '30',
+        btnWidth: '40',
+        btnVal:'搜索'
+    });
+</script>
+</html>

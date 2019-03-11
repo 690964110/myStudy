@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+
+    //回调机制很好用
+    //js单线程---》异步变成优化体验 防止阻塞页面----》回调函数回到主页执行
+    //运动函数 animate 当你满足某个状态，接下来要去做另外一件事。这也是回调机制
+
+
+    //--------------js不填参数------------------
+    var cb = $.Callbacks();
+    //回调函数
+    function a(x, y) {
+        console.log('a', x, y);
+    }
+    function b(x, y) {
+        console.log('b', x, y);
+    }
+    cb.add(a, b);
+    cb.fire('10', '20');
+    cb.fire('10', '20');
+    //--------------回调函数加参数---------------
+    //当填入参数是once的时候，fire只执行一次
+    var cb = $.Callbacks('once');
+    //回调函数
+    function a(x, y) {
+        console.log('a', x, y);
+    }
+    function b(x, y) {
+        console.log('b', x, y);
+    }
+    cb.add(a, b);
+    cb.fire('10', '20');
+    cb.fire('10', '20');
+//--------------回调函数加参数---------------
+    //当填入参数是memory的时候，后面添加的c回调函数在前面的fire执行的时候也会执行
+    var cb = $.Callbacks('memory');
+    //回调函数
+    function a(x, y) {
+        console.log('a', x, y);
+    }
+    function b(x, y) {
+        console.log('b', x, y);
+    }
+    cb.add(a, b);
+    cb.fire('10', '20');
+
+    function c(x, y){
+        console.log('c', x, y);
+    }
+    cb.add(c);
+//--------------回调函数加参数---------------
+    //当填入参数是unique的时候，具有去重，add两次也只有第一次生效
+    var cb = $.Callbacks('unique');
+    //回调函数
+    function a(x, y) {
+        console.log('a', x, y);
+    }
+    function b(x, y) {
+        console.log('b', x, y);
+    }
+    cb.add(a, b);
+    cb.add(a, b);
+    cb.fire('10', '20');
+
+    function c(x, y){
+        console.log('c', x, y);
+    }
+    cb.add(c);
+//--------------回调函数加参数---------------
+    //当填入参数是stopOnFalse的时候，return false的时候，后面就不会执行了
+    var cb = $.Callbacks('stopOnFalse');
+    //回调函数
+    function a(x, y) {
+        console.log('a', x, y);
+    }
+    function b(x, y) {
+        console.log('b', x, y);
+        return false;
+    }
+    function c(x, y){
+        console.log('c', x, y);
+    }
+    cb.add(a, b);
+    cb.add(c);
+    cb.fire('10', '20');
+
+
+    cb.add(c);
+
+</script>
+
+</html>

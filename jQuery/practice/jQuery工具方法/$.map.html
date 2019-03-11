@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+//$.map();工具方法,遍历数组并返回一个新的数组
+var arr = [1,2,3,4];
+var a = $.map(arr, function(index, ele){
+    return ele * index;
+})
+
+console.log(a);
+
+</script>
+</html>

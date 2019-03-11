@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="stopBtn">stop</button>
+    <button id="finishBtn">finish</button>
+    <button id="startBtn">start</button>
+    <div class="demo"></div>
+</body>
+
+<script src="../../js/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script>
+    //开关,是否启用动画，true为关闭动画
+    jQuery.fx.off = true;
+
+
+    //delay延迟多少时间后执行
+    //target duration运动时间 easing运动方式 callback回调函数
+    //消息队列，先进的先执行
+    $('#startBtn').on('click',function(){
+        $('.demo').animate({width:'+=50',height:'+=100',left:'+=100',top:'+=100'},1000,'swing',function(){
+            console.log('over');
+        })
+        .delay(2000)
+        .animate({width:'+=50',height:'+=100',left:'+=100',top:'-=200'},1000,'swing',function(){
+            console.log('over1');
+        })
+        // .animate({width:'+=50',height:'+=100',left:'+=100',top:'+=100'},1000,'swing',function(){
+        // console.log('over3');
+    });
+    
+    $('#stopBtn').on('click',function(){
+        //不填参数，停止当前运动，直接切换到下一次运动
+        //填一个参数true，停止一切运动
+        //填两个true，停止当前运动，且直接到当前目标点
+        $('.demo').stop(true,true);
+    })
+    $('#finishBtn').on('click',function(){
+        //没有参数，直接移动到最终目标点
+        $('.demo').finish();
+    })
+
+</script>
+
+</html>

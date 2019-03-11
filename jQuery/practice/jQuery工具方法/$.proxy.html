@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo" style="width: 100px; height: 100px; background: red;">123</div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    // $.proxy()//改变this的指向
+    function show() {
+        console.log(this);
+    }
+    var obj = {
+        name: 'dengxuming',
+        age: 123
+    }
+
+    $.proxy(show, obj);
+    show();//这样打印的还是window
+    //是将该方法this改变指向后形成新方法返回，不改变原来的方法
+    var showProxy = $.proxy(show, obj);
+    showProxy();//obj
+
+    //小案例
+    //这里的问题出在this.dom.onclick = this.show。这时的this为dom元素
+    //所以绑定事件就会出错。所以调用$.proxy()，来解决问题
+    var list = {
+        init: function () {
+            this.ms  = 123;
+            this.dom = document.getElementById('demo');
+            this.bindEvent();
+        },
+        bindEvent: function () {
+            this.dom.onclick = $.proxy(this.show,this);
+        },
+        show: function () {
+            console.log(this.produceMs(this.ms));
+        },
+        produceMs : function (ms) {  
+            return this.ms += 234;
+        }
+    }
+    list.init();
+
+
+
+</script>
+
+</html>

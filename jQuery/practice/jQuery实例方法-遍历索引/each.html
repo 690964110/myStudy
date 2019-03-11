@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p>
+        <i></i>
+        <span></span>
+        <i></i>
+        <span></span>
+        <i></i>
+        <span></span>
+    </p>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //添加类名和内容
+    // $('li').text(function(){}).addClass(function(){})
+    $('li').each(function(index, ele){
+        $(ele).text(index).addClass('demo'+index);
+    })
+
+    //获取该dom下的子节点
+    $('p').children().each(function(index, ele){
+        if(ele.nodeName == 'i'){
+            $(ele).text('i'+index); 
+        }
+    })
+
+    //-----------------index-------------------
+    //返回选中元素的索引
+    $('p').children().on('click',function(){
+        console.log($('p span').index($(e.target)));
+    })
+
+
+
+
+</script>
+</html>

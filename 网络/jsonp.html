@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-decoration: none;
+
+        }
+       a{
+           color: #999;
+           font-size: 14px;
+           padding: 5px;
+       }
+       li{
+           margin:5px;
+       }
+       li:hover{
+        background-color: #ddd;
+       }
+        input{
+            width: 400px;
+            height: 34px;
+        }
+        ul{
+            width: 400px;
+            height: 200px;
+            /* border: 1px solid black; */
+            display: none;
+        }
+        .wrapper{
+            margin:100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="text">
+        <ul></ul>
+    </div>
+</body>
+<script>
+    var oInput = document.getElementsByTagName('input')[0];
+    var oUl = document.getElementsByTagName('ul')[0];
+    oInput.oninput = function () {
+        var value = this.value;
+        var oScript = document.createElement('script');
+        oScript.src = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=" + this.value + "&cb=doJson";
+        document.body.append(oScript);
+        document.body.removeChild(oScript);
+    }
+
+    function doJson(data) {
+        var s = data.s;
+        var str = "";
+        if (s.length > 0) {
+            s.forEach(function (ele, index) {
+                str += '<li><a href="https://www.baidu.com/s?wd='+ele+'">' + ele + "</a></li>";
+            })
+            oUl.innerHTML = str;
+            oUl.style.display = 'block';
+        }else{
+            oUl.style.display = 'none';
+        }
+        
+    }
+</script>
+
+</html>

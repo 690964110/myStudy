@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo"></div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //target duration运动时间 easing运动方式 callback回调函数
+    //消息队列，先进的先执行
+    $('.demo').on('click',function(){
+        $(this).animate({width:'+=50',height:'+=100',left:'+=100',top:'+=100'},1000,'swing',function(){
+            console.log('over');
+        })
+        .animate({width:'+=50',height:'+=100',left:'+=100',top:'+=100'},1000,'swing',function(){
+            console.log('over1');
+        })
+        // .animate({width:'+=50',height:'+=100',left:'+=100',top:'+=100'},1000,'swing',function(){
+        // console.log('over3');
+    });
+    
+
+
+</script>
+
+</html>

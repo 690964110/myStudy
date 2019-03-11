@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="demo active"></div>
+<div class="demo"></div>
+<div class="demo"></div>
+    
+</body>
+<script src="../js/jquery.js"></script>
+<script>
+    //---------------css()-------------------------
+    // <div class="demo"></div>
+    //赋值
+// $('.demo')
+//     .css({width : '100px', height : '100px', backgroundColor : 'red'})
+//         .css({width : '+=100px'});
+//     //取值
+//     console.log($('.demo').css('backgroundColor'));
+     //---------------attr(),prop()-------------------------
+    // //  <div class="demo" cst = 'aa'></div>
+    // // <input type="checkbox" checked>
+    // //  attr 基于 setAttribute getAttribute
+    // //取值
+    // console.log($('.demo').attr('class'));
+    // console.log($('.demo').attr('cst'));
+    // //赋值
+    // $('.demo').attr('id','test1');//会映射到行间样式上
+    // //selected checked disabled 这三种采用prop
+    // //特性映射，非特性不能映射
+    // //取值
+    // console.log($('input').prop('checked'));//返回true和false
+    // //赋值
+    // $('input').prop('id','test');
+
+     //---------------html(),text(),size()-------------------------
+    //  <ul>
+    //     <li>1</li>
+    //     <li>2</li>
+    //     <li>3</li>
+    //     <li>4</li>
+    //     <li>5</li>
+    // </ul>
+     //html()，取值只能取一个，赋值会全部赋值
+     //取值
+        console.log($('ul').html());//返回字符串，只返回第一个
+
+    //赋值
+        $('ul').html('<p style="color:red;">a</p>');//会覆盖之前的内容
+        $('ul li').html('9');
+    //案例
+    var arrName = ['cst', 'jc', 'dengge', 'wuyanzu' ];
+    $('ul li').html(function(index, ele){
+        return '<p style="color : orange">'+arrName[index]+'</p>';
+    })
+    //text()
+    //取值（全部取）
+    console.log($('ul').text());
+    //赋值
+    $('ul').text('9');//全部覆盖，放入标签会变成文本
+    //案例
+    $('ul li').text(function(index, ele){
+        return arrName[index];
+    })
+    console.log($('ul li').size());
+
+    //---------------html(),text(),size()-------------------------
+    $('.demo').eq(0).addClass('active duyi');//添加类名，等同于与原生js ClassName+='active duyi'
+    $('.demo').addClass(function(index, ele){
+        return index %2 == 0 ? 'duyi' : 'active';
+    })
+    $('div').eq(0).removeClass('active demo');//顺序没影响，不填就全删掉
+    $('div').removeClass('demo active');//有就删掉，没有不删
+    $('div').removeClass(function(index, ele){
+        if(index % 2 == 0){
+            return 'demo';
+        }
+        return '';//这个会全部删除
+    })
+    console.log($('.demo').hasClass('active'));//有一个就返回true
+    //----------------------------------------
+
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="demo" style="width: 200px; height: 200px; background-color: red; position:absolute;left:0;top:0;"></div>
+</body>
+<script src="../../js/jquery.js"></script>
+<script>
+    //$.extend 总共有三个用法
+    //扩展方法
+    //浅层次克隆
+    //深层次克隆
+
+    //-----------------------------扩展工具方法-------------------------------------
+    $.extend({
+        definedMandom : function(start, final){
+            //[0, 1) * len + start;
+            var len = final - start;
+            return Math.random() * len + start;
+        },
+        'abc' : function(){
+
+        }
+    })
+
+    //调用工具方法
+    $.extend(5, 10);
+
+    //-----------------------------扩展实例方法-------------------------------------
+    $.fn.extend({
+        drag : function(){
+            var disX
+                ,disY
+                ,self = this;
+            $(this).on('mousedown', function(e){
+                //  e.pageX文档的x坐标 $(this).offset().left dom元素左边界坐标
+                disX = e.pageX - $(this).offset().left;
+                disY = e.pageY - $(this).offset().top;
+                console.log( disX + '---' + e.pageX + '--------' +$(this).offset().left);
+                $(document).on('mousemove', function(e){
+                    $(self).css({left: e.pageX - disX, top: e.pageY - disY});
+                    console.log( disX + '---' + e.pageX);
+                })
+
+                $(document).on('mouseup', function(e){
+                    $(document).off('mousemove').off('mouseup');
+                })
+            })
+            return this;
+        }
+    })
+    $('.demo').drag();
+
+    //所以调用这两个方法都是一样的，只是调用的对象不一致而已
+    // $.extend = $.fn.extend = function(){
+
+    // }
+    //--------------------------------浅层次克隆--------------------------
+    var obj1 = {
+        lastName : 'deng',
+        age : 5,
+        girlFriend : {
+            name : 'xiaozhang'
+        }
+    }
+
+    var obj2 = {
+        lastName : 'laodeng',
+        age : 50,
+        girlFriend : {
+            name : 'xiaowang'
+        },
+        smoke : true
+    }
+
+    var obj3 = {
+        lastName : 'xiaoliu',
+        age : 60,
+        girlFriend : {
+            name : 'xiaozhang'
+        },
+        fortune : 10000000
+
+    }
+
+    $.extend(obj1, obj2, obj3);
+    console.log(obj1);
+    //将obj2和obj3 的内容克隆到obj1上，如果有重复的属性覆盖，如果是对象，将对象的引用拿过去
+
+
+    //--------------------------------深层次克隆--------------------------
+
+    $.extend(true, obj1, obj2, obj3);
+ //将obj2和obj3 的内容克隆到obj1上，如果有重复的属性覆盖，如果是对象，克隆一个新对象
+
+
+
+</script>
+</html>

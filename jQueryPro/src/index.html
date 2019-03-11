@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            float: left;
+            width: 513.778px;
+            height: 289px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+    <div class="wrapper">
+
+    </div>
+</body>
+<script src="./js/tool/jquery-3.3.1.js"></script>
+<script src="./js/carousel/carousel.js"></script>
+<script>
+    $('.wrapper').each(function(index,ele){
+        $(ele).carousel({
+        imgList: ['./img/1.jpg', './img/2.jpg', './img/3.jpg', './img/4.jpg', './img/5.jpg', './img/6.jpg'],
+        showBtn: false,
+        autoChange: true,
+        animation: 1,
+        center: false
+    })
+    })
+    
+</script>
+
+</html>
