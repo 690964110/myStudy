@@ -1,0 +1,167 @@
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ body{
+     background-color: #000; 
+ }
+ /* ------------------border-radius------------------------  */
+/* Horizontal Radius(水平半径)
+Vertical Radius（垂直半径） */
+/*
+    四个值，    左上， 右上， 右下， 左下
+    三个值      左上， 右上左下， 右下
+    两个值      左上右下，右上左下
+    一个        四个角
+*/
+/*
+    当设置某一个角时，也有两个参数，水平和垂直
+    当两个值都达到正方形的宽度，就会变成1/4圆
+    如果四个角都是正方形宽度的一半，那正方形就变成圆形
+*/
+/* div{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px); */
+    /* border-radius: 10px 20px ; 
+    border-top-left-radius: 10px 10px;
+    border-radius: 10px 20px 30px 40px / 10px 20px 30px 40px;
+    这一个时简写方式，分别代表每个角的水平和垂直两个方向10px 10px为左上一组
+    其他类推
+    */
+/* } */
+/* ------------------box-shadow------------------------ */
+/*
+    box-shadow:第一个值，阴影水平方向偏移量，第二个值，垂直方向偏移量
+    第三个值，阴影的模糊度blur，往外和内同时模糊，但是影响不到原来的
+    内容，第四个值，阴影的大小，上下左右四个方向同时增加设置的值
+    
+    box-shadow,前面有参数inset，代表的是内阴影，
+    第一个值：水平偏移量
+    第二个值：垂直偏移量
+    第三个值：blur模糊程度，向里
+    第四个值：阴影的大小
+    可以同时设置多个值
+    box-shadow: inset 0px 0px 10px #fff,
+                3px 0px 10px #f0f,
+                0px -3px 10px #0ff,
+                -3px 0px 10px #00f,
+                0px 3px 10px #ff0;
+
+    文字在阴影的上面
+    背景颜色在阴影的下面
+*/
+/*-------------------demo1------------------------*/ 
+/* :root,
+body{
+    background-color: #000;
+}
+div{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+    box-shadow: 0px 0px 0px 0px #0ff;
+    box-shadow: inset 0px 0px 0px 0px #fff;
+    box-shadow: inset 0px 0px 10px #fff,
+                3px 0px 10px #f0f,
+                0px -3px 10px #0ff,
+                -3px 0px 10px #00f,
+                0px 3px 10px #ff0;
+} */
+/*--------------------------demo2炫酷圆阴影-----------------------*/
+/* div{
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    width: 300px;
+    height: 300px;
+    border-radius: 20px 40px 60px 80px / 20px 40px 60px 80px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    box-shadow: inset 0px 0px 50px #fff,
+                inset 10px 0px 80px #f0f,
+                inset -10px 0px 80px #0ff,
+                inset 10px 0px 300px #f0f,
+                inset -10px 0px 300px #0ff,
+                0px 0px 50px #fff,
+                -10px 0px 80px #f0f,
+                10px 0px 80px #0ff;
+} */
+/*--------------------------demo3小太阳-----------------------*/
+/* div{
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 100px 50px #fff,
+                0px 0px 250px 125px #ff0;
+} */
+/*--------------------------demo4-----------------------*/
+/* div{
+    position: absolute;
+    border-radius: 5px;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width:100px;
+    height: 100px;
+    background-color:#fff;
+    box-shadow: 0px 1px 2px rgba(255, 255, 255, .1); 
+    transition: all .6s;
+}
+div::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, .3);
+    opacity: 0;
+    transition: all .6s;
+}
+
+div:hover{
+    transform: scale(1.25, 1.25) 
+}
+div:hover::after{
+    opacity: 1;
+} */
+
+div{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    box-shadow: 0px 1px 2px rgba(255, 255, 255, .1);
+    transition: all .6s;
+}
+div::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, .3);
+    transition: all .6s;
+    opacity: 0;
+}
+div:hover{
+    transform: scale(1.5, 1.5);
+}
+div:hover::after{
+    opacity: 1;
+}

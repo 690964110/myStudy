@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+    linear-gradient只能放在background-image里面 
+    公司开发，为避免要的图片加载不出来，导致用户体验差
+    先放一张占位，所以第二个url的图片就是用来占位的
+    下面的属性一般不设置
+
+*/
+/* --------------------多张图片一起展示--------------------- */
+/* div{
+    width: 600px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 300px);
+    background-image: url(../img/1.jpg), url(../img/2.jpg), url(../img/5.jpg);
+    background-repeat: no-repeat;
+    background-position: 0 0, 200px 0, 400px 0;
+    background-size: 200px 200px,200px 200px, 200px 200px;
+} */
+
+/* --------------------属性讲解--------------------- */
+/*
+    background-origin: padding-box（默认值）;
+     当no-repeat以后，空白部分不填充，所以origin就从填的地方开始有效果
+    例如content，padding，border
+    background-position: 20px 20px;origin的值为position起始坐标即（0， 0）
+    background-clip:打哪里结束（border-box(默认值), padding-box, content-box, text）
+*/
+/* div{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 300px);
+    background-image: url(../img/1.jpg);
+    background-repeat: no-repeat;
+    padding: 20px;
+    border: 20px solid transparent;
+    background-origin: padding-box; 
+    background-position: 20px 20px;
+     background-clip: border-box;
+
+} */
+/* --------------------clip：text属性demo--------------------- */   
+/* div{
+    width: 400px;
+    height:200px;
+    position: absolute;
+    font-size: 100px;
+    font-weight: bold;
+    top: calc(50% - 100px);
+    left: calc(50% - 300px);
+    background-image: url(../img/5.jpg);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-position: 0 0;
+    transition: all .6s;
+}
+div:hover{
+    background-position: center center;
+} */
+/* --------------------background-repeat--------------------- */ 
+/* 
+    属性值有round space repeat-x repeat-y no-repeat
+    round 拉伸平铺
+    space 空白平铺
+    repeat-x代表两个值，no-repeat-y,repeat-x;
+    repeat-y也同理
+    no-repeat不重复
+
+    */
+
+/* div{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 300px);
+    background-image: url(../img/1.jpg);
+    background-size: 50px 50px;
+    background-repeat: round;
+
+} */
+/* 
+    scroll是默认值，背景图片固定div指定位置，视口移动， 背景图片在
+            div的位置不变
+    local 在所有内容的中部
+    fixed 跟随内容区固定，视口移动背景图片在div的位置改变
+*/
+
+div{
+    width: 200px;
+    height: 500px;
+    position: absolute;
+    top: calc(50% - 250px);
+    left: calc(50% - 100px);
+    border: 1px solid red;
+    overflow-x: scroll;
+    background-image: url(../img/5.jpg);
+    background-size: content;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+}
+/* 
+    background-size:cover,content;
+    cover和content的原理
+    cover  div包裹不完 一张图片，不留空，没展示完
+    content包裹一张图片，会留空，展示完
+    cover 
+        div 500 700 ---> 500 700
+        img 100 200 ---> 500 1000
+    
+    content
+        div 500 700 ---> 500 700
+        img 100 200 ---> 350 700
+*/ 

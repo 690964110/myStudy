@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #000;
+}
+/*
+    ***border-image-source border-image-slice同时存在才又效果
+    border-image-source:可以是图片，用url填地址，也可以是颜色或者渐变色
+    border-image-slice:是按照上右下左四根线切割，
+    border-image-outset: 100px;让背景图片往外延申
+    border-image-width：border里面能显示背景的宽度 1代表1倍，可以填50px等
+    border-image-repeat: stretch拉伸 round平铺 repeat图片拉伸再铺满 space空白填充再铺满
+    border-image: source slice repeat;一次填充多个值width和outset分开写
+*/
+div{
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    border: 100px solid black;
+    border-color: lightpink;
+    border-image-source: linear-gradient(red,yellow);
+    border-image-slice: 1;
+    border-image-width: 100px;
+    border-image-outset: 100px;
+    border-image-repeat: stretch;
+
+    
+}
