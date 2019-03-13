@@ -1,0 +1,24 @@
+@font-face{
+    font-family: 'abc';
+    src: url(‘diyfont.ttf) format('truetype')
+}
+/* 
+    根据浏览器内置MIME协议不同，能打开的后缀名文件不同，
+    format可以强制让操作程序使用其他程序打开，只是解析
+    效果可能不是想要的。  
+*/
+div{
+    width:100px;
+    height:100px;
+    background-color:#000;
+}
+/* truetype 微软   苹果    .ttf
+opentype 微软   abode   .opt是.ttf的升级版本
+woff                    .woff 朗阔了.ttf和.opt
+                        .eat
+                        .svg 
+
+MIME(.ttf .txt .pdf)
+协议在浏览器内置的，根据版本不同，协议内容缺省情况不同
+该协议定义了一些映射，浏览器根据这些映射找操作系统中相应软件帮忙，
+打开文件*/

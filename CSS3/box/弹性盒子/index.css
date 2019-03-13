@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+    display: flex;弹性盒子
+    flex 和 inline-flex区别
+    块级元素    行级元素
+    ------------flex-direction-----------------
+    在设置了弹性盒子以后，设置方向一共四个值
+    row，row-reverse, column, column-reverse
+    横向   横向反向     纵向     纵向反向
+    flex-direction: column-reverse;该值为弹性盒子的主轴方向
+    交叉轴方向为这个90deg方向
+
+    ---------------flex-wrap----------------------
+    弹性盒子如果为设置flex-wrap的值为nowrap，会在一行内装无数个
+    盒子，只是每个盒子都被拉伸说小了，如果设置了wrap，则，默认会
+    换行
+    flex-wrap：nowrap（默认值）；wrap；wrap-reverse;
+    wrap-reverse;这个反向，是每一行反向，不是行里面的盒子反向
+
+    ---------------justify-content----------------------
+    这个属性基于主轴来定方向的 
+    justify-content: space-around;最边上两个项目距离边界有距离，中间均分
+    space-between；最边上两个项目距离边界无距离，中间均分
+    space-evenly；每个项目之间距离相同，边界也一样
+    flex-start; 基于主轴左边对齐
+    flex-end；基于主轴有点对齐
+    center;基于主轴中心对齐
+    inherit;继承父级的属性
+
+    ---------------align-items----------------------
+    基于交叉轴的对齐方式(主要是针对单行文本居中的方式)
+    flex-start; 基于交叉轴的上方对齐
+    flex-end;   基于交叉轴的底部对齐
+    center;     基于交叉轴的中间对齐
+    align-items: baseline;  当其中一个项目设置了margin或者padding
+                偏移以后，其他项目就根据这个项目对齐
+    stretch;    当里面的项目没有设置高度的时候才生效
+                原本每个items被内容区撑开，现在直接是父级的高度
+    
+    ---------------align-content----------------------
+    多行文本集中处理机制
+    flex-start; 基于交叉轴的上方对齐
+    flex-end;   基于交叉轴的底部对齐
+    center;     基于交叉轴的中间对齐
+    space-between; 上下两行items抵达边界，中间自适应分配
+    space-arund; 每行items自适应距离，距离边界也有距离
+    stretch; 每行items没有设置高度，就自适应高度，几行一起填充满整个父级
+*/
+/* .wrapper{
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.wrapper .content{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+.content:nth-of-type(2){
+    margin-top: 20px;
+} */
+/* -------------------------单行剧中-------------------- */
+.wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.wrapper .content {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
