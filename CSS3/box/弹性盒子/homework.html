@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./homework.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="h-top">
+                <div class="h-top-content">
+                    <img src="http://sm01.alicdn.com/L1/272/6837/static/wap/img/doodle/sm-logo-min.png" alt="">
+                </div>
+                <div class="h-top-content">
+                    <a href="#">网页</a>
+                </div>
+                <div class="h-top-content">
+                    <a href="#">小说</a>
+                </div>
+                <div class="h-top-content">
+                    <a href="#">视频</a>
+                </div>
+                <div class="h-top-content">
+                    <a href="#">更多</a>
+                </div>
+            </div>
+            <div class="search-wrap">
+                <input type="text">
+                <button>搜索</button>
+            </div>
+        </div>
+        <div class="content"></div>
+        <div class="footer"></div>
+    </div>
+</body>
+<script>
+    var length = 10;
+    var fn = function(){
+        console.log(this.length);
+    }
+    var obj = {
+        length: 5,
+        method: function(fn){
+            fn();
+            arguments[0]();
+        }
+    };
+    obj.method(fn, 1);
+    var arr = [function(){console.log(this.length)},1]
+</script>
+</html>

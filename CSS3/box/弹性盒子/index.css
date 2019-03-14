@@ -22,8 +22,8 @@
     wrap-reverse;这个反向，是每一行反向，不是行里面的盒子反向
 
     ---------------justify-content----------------------
-    这个属性基于主轴来定方向的 
-    justify-content: space-around;最边上两个项目距离边界有距离，中间均分
+    justify-content:这个属性基于主轴来定方向的 
+    space-around;最边上两个项目距离边界有距离，中间均分
     space-between；最边上两个项目距离边界无距离，中间均分
     space-evenly；每个项目之间距离相同，边界也一样
     flex-start; 基于主轴左边对齐
@@ -36,7 +36,7 @@
     flex-start; 基于交叉轴的上方对齐
     flex-end;   基于交叉轴的底部对齐
     center;     基于交叉轴的中间对齐
-    align-items: baseline;  当其中一个项目设置了margin或者padding
+    baseline;   当其中一个项目设置了margin或者padding
                 偏移以后，其他项目就根据这个项目对齐
     stretch;    当里面的项目没有设置高度的时候才生效
                 原本每个items被内容区撑开，现在直接是父级的高度
@@ -70,8 +70,8 @@
 .content:nth-of-type(2){
     margin-top: 20px;
 } */
-/* -------------------------单行剧中-------------------- */
-.wrapper {
+/* -------------------------单行居中-------------------- */
+/* .wrapper {
     width: 600px;
     height: 300px;
     border: 1px solid red;
@@ -88,4 +88,382 @@
     height: 100px;
     border: 1px solid #000;
     box-sizing: border-box;
+} */
+/* --------------------items------------------------- */
+/* 
+    -------------------order----------------------
+    order: 0;默认值是0；
+    item里面的每一项的排序规则，越小的越在前，所以给为负值
+
+    -------------------align-self----------------------
+    选中item的基于交叉轴的位置排序
+    flex-start; 基于交叉轴的上方对齐
+    flex-end;   基于交叉轴的底部对齐
+    center;     基于交叉轴的中间对齐
+    baseline;   当其中一个项目设置了margin或者padding
+                偏移以后，其他项目就根据这个项目对齐
+    stretch;    当里面的项目没有设置高度的时候才生效
+                原本每个items被内容区撑开，现在直接是父级的高度
+    优先级高低
+    align-content> align-self > align-items
+*/
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.wrapper .content {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+.content:nth-of-type(1){
+    order: -1;
+    align-self: flex-start;
+}
+.content:nth-of-type(2){
+    order: -2;
+    align-self: flex-end;
+} */
+/* -------------------伸缩盒核心功能-----------------------  */
+/* 
+    -------------------flex-grow----------------------
+    当前行还有剩余空间，剩余的空间按照所给的比例来分剩下的空间
+
+    -------------------flex-basis----------------------
+    可以取代width;也是设置宽度，比重比width大
+    flex-basis: auto; 默认值是auto，跟width对齐
+    flex-basis: 150px;
+
+    -------------------flex-basis----------------------
+*/
+/* flex-basis 和 flex-grow */
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.wrapper .content {
+    flex-basis: 150px;
+    flex-grow: 3;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+}
+.content:nth-of-type(1){
+    flex-grow: 1;
+
+}
+.content:nth-of-type(2){
+    flex-grow: 3;
+} */
+
+/* flex-shrink */
+/* 
+    flex-shrink按照比例压缩超出的空间
+    flex-shrink默认值为1， 0代表不均分
+    不加border的算法
+    1   2   3   200+200+400-600 = 200px;
+    1   1   3  总共5分，超出200px
+    1：先计算总值长度*权重
+    200*1 + 200*1 + 400*3 = 1600；
+    2:计算每一个应该减少多少
+    200*1/1600 * 200 = 25;
+     200*1/1600 * 200 = 25;
+    400*3/1600 * 200 = 150;
+    所以长度分别为175，175，250
+*/
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;
+}
+.content{
+    width: 200px;
+    height: 100px;
+    flex-shrink: 1;
+}
+.content :nth-of-type(3){
+    width: 400px;
+    flex-shrink: 3;
+}  */
+/* 
+    当在IE6混杂模式下。有padding和border的情况下的计算规则
+    计算的是内容区的宽度，而不是总共的宽度
+    1：先计算多余部分的宽度
+        200  + 200  + 400 - 600 = 200
+    2: 计算权重总值(IE6混杂模式下，计算的是内容去的宽度)
+        40 * 1 + 40 * 1 + 240 * 3 = 800;
+    3: 计算每个缩小的像素
+        40 * 1 / 800 *200  = 10
+        40 * 1 / 800 * 200  = 10
+        240 * 3 / 800 * 200 = 180 
+    4： 每个item内容区宽度为
+        30      30      60
+    5： 每个item的总宽度为
+        30+160 = 190
+        30+ 160 = 190
+        60 + 160 = 220 
+*/
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;
+    
+}
+.content{
+    width: 200px;
+    height: 100px;
+    flex-shrink: 1;
+    box-sizing: border-box;
+    padding: 0 80px;
+    flex-shrink: 1;
+    background-color: yellow;
+}
+.content:nth-of-type(2){
+    background-color: #0ff;
+}
+.content:nth-of-type(3){
+    background-color: green;
+    width: 400px;
+    flex-shrink: 3;
+} */
+/* 
+    flex-basis 和 width 的区别
+    1: width：如果文字内容的宽度超过width的时候，不坐截短，内容去不撑开
+    2: flex-basis：如果文字内容的宽度超过flex-basis,且width没设置的时候，内容区被撑    开相当于min-width = flex-basis；
+    3: 当width和flex-basis都设置的时候，max-width = width;min-width = flex-basis;
+    4: 无论什么情况，被不换行内容撑开的容器，不会被压缩计算
+
+*/
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;    
+}
+.content{
+    flex-basis: 100px;
+    height: 100px;
+    background-color: yellow;
+} 
+.content:nth-of-type(2){
+    background-color: #0ff;
+}
+.content:nth-of-type(3){
+    background-color: green;
+}  */
+/* 第四种情况 */
+/* .wrapper {
+    width: 600px;
+    height: 300px;
+    border: 1px solid red;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 300px);
+    display: flex;    
+}
+.content{
+    width: 200px;
+    height: 200px;
+}
+.content:nth-of-type(1){
+    width: 400px;
+    background-color: yellow;
+    flex-shrink: 3;
+    word-break: break-word;
+}
+.content:nth-of-type(2){
+    background-color: #0ff;
+    flex-shrink: 1;
+}
+.content:nth-of-type(3){
+    background-color: green;
+    flex-shrink: 1;
+}  */
+/* 
+    三个items，不在同一行，并且都占满
+*/
+/* .wrapper{
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 300px);
+    border: 1px solid green;
+    display:flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.content{
+    flex:1 1 auto;
+    width: 250px;
+    height: 200px;
+    background-color:#f00;
+}
+.content:nth-of-type(1){
+    background-color: green;
+}
+.content:nth-of-type(2){
+    background-color: #ff2;
+} */
+/* 
+   ----------------伸缩盒居中且随比例居中-------------------- 
+*/
+/* .wrapper{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    resize: both;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.content{
+    width:200px;
+    height: 200px;
+    border: 1px solid black;
+} */
+/* 
+   ----------------动态添加导航栏-------------------- 
+*/
+/* .wrapper {
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.item { 
+    flex: 1 1 auto;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    color: #f20;
+    border-radius: 5px;
+}
+
+.item:hover {
+    color: #fff;
+    background-color: #f20;
+} */
+/* 
+   ----------------几等分-------------------- 
+   可以在中间直接添加margin
+*/
+/* .wrapper{
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+}
+
+.content{
+    height: 100px;
+    flex: 1 0 auto;
+    border: 1px solid green;
+    margin: 0 10px;
+} */
+/* 
+   ----------------中间固定两边自适应-------------------- 
+   自适应布局不等比例缩放
+*/
+/* .wrapper{
+    resize: both;
+    overflow: hidden;
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+}
+
+.content{
+    height: 100px;
+    flex: 1 1 auto;
+    border: 1px solid green;
+}
+.content:nth-of-type(2){
+    flex: 0 0 50%   ;
+}
+.content:nth-of-type(3){
+    flex: 2 2 auto;
+} */
+/* 
+   ----------------流式布局float-------------------- 
+*/
+/* .wrapper{
+    width: 400px;
+    height: 600px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.content{
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    border: 1px solid green;
+} */
+/* 
+   ----------------圣杯布局-------------------- 
+*/
+.wrapper{
+    position: absolute;
+    top: 200px;
+    left: calc(50% - 200px);
+    resize: both;
+    overflow: hidden;
+    width: 400px;
+    height:400px;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+}
+.header, .footer, .left, .right{
+    flex: 0 0 20%;
+    border: 1px solid green;
+    box-sizing: border-box;
+
+}
+.content{
+    box-sizing: border-box;
+    flex: 1 1 auto;
+    border: 1px solid green;
+    display: flex;
+}
+.center{
+    flex: 1 1 auto;
 }
