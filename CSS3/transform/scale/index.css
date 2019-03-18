@@ -1,0 +1,29 @@
+*{
+    margin:0;
+    padding:0;
+}
+/* 
+    transform: 伸缩变化；
+    条件，先写轴的定位点
+    transform-origin: 0 , 0;
+
+    ------------------scale详解--------------------
+    scale3d(x,y,z);
+    1： scale(2,1)这个会保留自己对坐标轴的影响，即x方向影响
+        rotate(-45deg)；当角度变化以后，x轴的影响还在，如果
+        后面还加的有scale(2,1)，是在现在移动角度后的坐标轴变化
+*/
+div{
+    position: absolute;
+    top: 200px;
+    left:200px;
+    width:200px;
+    height:200px;
+    background-image: url(../img/5.jpg);
+    background-size: 100% 100%;
+    transform-origin: 0 0;
+    transform: scale(2,1) rotate(-45deg);
+    transform: scale(10px)
+}
+
+

@@ -1,0 +1,20 @@
+/* 
+    --------------------------贝塞尔曲线----------------------------
+    B(t)= P0(1-t)^3 + 3P1*t(1-t)^2+3P2*t^2(1-t) + P3t^3;t = [1,1]
+    P0 和 P3是起点和终点（0，0）（1，1）
+    P1 和 P2是控制点的坐标
+    贝塞尔曲线控制点的个数为： n次贝塞尔曲线-1.
+    总点数为n+1
+*/
+div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transition: width 2s cubic-bezier(0, .53,1,1) ;
+}   
+div:hover{
+    width: 400px;
+}

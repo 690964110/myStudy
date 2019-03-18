@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+/* 
+    -------------自身宽高不确定，利用translate居中---------
+    四件套
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    -------------perspective---------------------
+    perspective: 800px;
+    1: 相当于视线在屏幕上的投影
+    2: perspective不能为负值，因为图像不可能跑计算机外面去了
+    3: perspective只能设到父级上，子级才会有效果
+    4：perspective可以叠加（父级和元素自身都设置景深）。效果会更立体，
+    
+    -------------tranlatez---------------------
+    z轴位移，单位是像素。受顺序影响
+    当设置了perspective以后，z越接近perspective,
+    translate为正时图片会放大，当快到临界值或者超过临界值就看不见了
+    translate为负时图片会变小，当快到临界值或者超过临界值就看不见了
+
+*/
+/*body{
+    perspective: 800px;
+}
+ 
+div{
+    width:200px;
+    height:200px;
+    background-image: url(../../img/5.jpg);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg)  ;
+} */
+/* 
+    ---------------设置视角---------------------
+    ---------------perspective-origin----------
+    设置视觉的位置，根据不同的视觉位置看到的图像状态不一致
+
+    ---------------transform:perspective()---------
+    此方法为transform的一个属性，和在父级上设置perspective
+    的区别：
+    父级上设置：所有子元素只有一个眼睛（视觉）来看
+    transform：只能在元素自身设置，所以每个元素都有一个
+    独立的眼睛，且，transform上不能设置perspective-origin。
+    也就是眼睛只能在默认的center，center的位置。
+    还有一点，该属性要设置只能放在transform的第一个属性，
+    否则有的浏览器显示不出效果。
+    适用场景： 多个图片都要展示一样的景深效果。
+
+
+
+*/
+:root,
+body{
+    height: 100%;
+}
+body{
+    perspective: 800px;
+
+}
+@keyframes imgRotate{
+    from{
+        transform: rotateY(0deg);
+        transform-style: preserve-3d;
+    }
+    to{
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+    }
+}
+.content1,
+.content2,
+.content3,
+.content4,
+.content5{
+    width: 200px;
+    height: 200px;
+    background-image: url(../../img/5.jpg);
+    background-size: 100% 100%;
+    transform: rotatey(45deg);
+    position: absolute;
+    top: 200px;
+    animation: imgRotate 8s infinite;
+}
+.content1{
+    left: 200px;
+}
+.content2{
+    left: 400px;
+}
+.content3{
+    left: 600px;
+}
+.content4{
+    left: 800px;
+}
+.content5{
+    left: 1000px;
+}
+/* 
+    ---------------transform-style-------------
+    //transform-style:让2d的屏幕变成3d的效果
+    当我们只设置景深的时候，浏览器其实还是2d的
+    主要原因为浏览器渲染引擎能力不足。
+    设置该属性就可以转化为3d
+    当没有设置该属性的时候，父级添加旋转会导致看不出
+    translatez的效果
+*/
+/* body{
+    perspective: 800px;
+    perspective-origin: 300px 100px;
+}
+.wrapper{
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    transform: rotatey( 0deg);
+    transform-style: preserve-3d;
+}
+.content{
+    width: 200px;
+    height: 200px;
+    background-image: url(../../img/5.jpg);
+    background-size: 100% 100%;
+    transform: translateZ(100px);
+} */
+
+/* 
+    -----------------transform-origin---------------
+    设置旋转中心，可以是空间坐标
+    也就是三个州的交点处
+*/
+/* body{
+    perspective: 800px;
+    
+}
+
+div{
+    width:200px;
+    height:200px;
+    background-image: url(../../img/5.jpg);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    transform: rotatey(0deg) ;
+    transform-origin: 100px 100px 100px;
+    transform-style: preserve-3d;
+}  */

@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+/* 
+    ---------------rotate--------------------
+    根据旋转的先后顺序不同，得出的效果也不同
+    rotate转动的是坐标轴
+    下面三个都是根据水平垂直坐标系来调整，也就是x,y,z
+    rotateX(0deg) x方向移动
+    rotateY(0deg) y方向移动，切记，y方向向下
+    rotateZ(0deg) z方向移动，z方向为垂直画面方向
+    rotate3d(x,y,z,angle);
+    x,y,z代表的是一根轴，将x, y, z放到直接坐标系中，从
+    (0,0,0,) 到 (x, y, z)的方向作为轴，angle是围绕轴旋转
+    的方向
+
+*/
+body{
+    perspective: 800px;
+    transform-style: preserve-3d;
+    perspective-origin: 300px 300px;
+}
+
+@keyframes clock{
+    from{
+        transform: rotateX(-45deg);
+    }
+    to{
+        transform: rotateX(45deg);
+    }
+}
+div{
+    width: 200px;
+    height:200px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    transform-origin: 0 0;
+    background-image: url(../img/5.jpg);
+    background-size: 100% 100%;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    animation: clock 2s cubic-bezier(.5,.5,1,1) infinite alternate;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 该标签会根据屏幕的dpr比值，将css逻辑像素等比例缩放成物理像素，也就是不同分辨率的像素 -->
+    <!-- width是视口的宽度
+    device-width是设备的宽度 
+    width = device-width 在iphone或者ipad上，横竖屏的宽度 = 竖屏的宽度。所以无法改变
+    initial-scale = 1.0;初始化缩放比 ： windows手机上的ie浏览器上 横竖屏的宽度 =竖屏的宽度。
+    所以两者一起写可以兼容所有设备  
+    
+    user-scalable=no
+    是否允许用户可以缩放
+
+-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0，user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" media="screen and (max-width: 375px)" href="./index.css"> -->
+    <link rel="stylesheet" href="./index.css">
+    <style>
+        @import './index.css' screen and (max-width: 375px);
+    </style>
+    <style>
+
+         /*.wrapper{
+            display: flex;
+            width: 1500px;
+            height: 900px;
+        }
+        .demo{
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        @media screen and (max-width: 375px) and (min-width: 300px){
+            html,body{
+                width: 100%;
+                padding:100%;
+                background-color: red;
+            }
+        } */
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* 
+    ---------------------@keyframes------------------------
+    定义关键帧动画，百分比代表的是时间
+    0% 和 100%可以使用from和to代替
+    其他的不可以，
+    再调用的时候，直接调用名字就行。
+    兼容性有问题，需做兼容性处理
+
+    --------------------animation-duration-----------------
+    动画完成一个周期所需要的时间
+    单位是s
+
+    --------------------animation-timing-function-------------------
+    用来规定动画的速度曲线，使用贝塞尔曲线表达式来做
+    linear    动画从头到尾的速度是相同的。
+    ease    默认。动画以低速开始，然后加快，在结束前变慢。
+    ease-in    动画以低速开始。
+    ease-out    动画以低速结束。
+    ease-in-out    动画以低速开始和结束。
+    cubic-bezier(n,n,n,n)    在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。    
+
+    --------------------animation-delay-------------------
+    动画何时开始，即延时操作，和setTimeOut类似
+
+    --------------------- animation-iteration-count-----------------------
+    动画的重复次数
+    infinite 无限次
+    可以直接填次数
+    ----------------------animation-direction-----------------------
+    使用条件，动画至少运行两次
+    normal  正常运动不改变
+    alternate   第一圈运动完成后反向运动
+
+    -----------------------animation-play-state--------------------
+    是动画暂停，一般搭配hover使用，兼容性不好，一般不用
+
+    -----------------------animation-fill-mode---------------------------
+    兼容性还可以
+    none | forwards | backwards | both;
+    none        默认值
+    forwards    动画完成时，保持最后一帧的效果
+    backwards   动画开始之前，保持第一帧的效果
+    both;       两个都用
+*/
+
+/* 
+    background-image: 不支持动画
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #000;
+}
+@keyframes space-change{
+    0%{
+        opacity: .3;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: .3;
+    }
+    75%{
+        opacity: .1;
+    }
+    100%{
+        opacity: .3;
+    }
+}
+@keyframes sunrise{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: .5;
+        transform: scale(.7,.7) translateX(0) translateY(0);
+    }
+    30%{
+        opacity: 1;
+        transform: scale(.5,.5) translateX(0) translateY(-500px);
+    }
+    50%{
+        opacity: 0;
+        transform: scale(.7,.7) translateX(400px) translateY(0);
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes moonrise{
+    0%{
+        opacity: 0;
+        transform: translateY(0);
+    }
+    30%{
+        transform: translateY(0);
+    }
+    50%{
+        opacity:0;
+    }
+    70%{
+        transform: translateY(-400px);
+        opacity: 1;
+    }
+    80%{
+        transform: translateY(-400px);
+        opacity: 1;
+    }
+    90%{
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+
+}
+.space{
+    height: 500px;
+    background-image: linear-gradient(to bottom,rgba(0, 130, 255, 1), rgba(255,255,255,1));
+    animation: space-change 15s cubic-bezier(.5,0,.5,1) infinite;
+}
+.sun{
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 100px 50px #fff,
+                0px 0px 250px 100px #ff0;
+    animation: sunrise 15s infinite;
+    animation-fill-mode: forwards;
+} 
+.moon{
+    position: absolute;
+    left: calc(50% + 400px);
+    top: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0px 0px 16px #fff,
+                inset 0px 0px 8px #000;
+    animation: moonrise 15s cubic-bezier(0,0,.5,.5) infinite;
+    animation-fill-mode: forwards ;
+}
+/* .moon::after{
+    position: absolute;
+    content: "";
+    width: 90px;
+    height: 90px;
+    background-color: #000;
+    border-radius: 50%;
+    left:-10px;
+    top:-10px;
+    opacity: 0.2;
+} */

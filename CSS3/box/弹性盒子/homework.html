@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./homework.css">
 </head>
+
 <body>
     <div class="wrapper">
         <div class="header">
@@ -28,27 +30,90 @@
                 </div>
             </div>
             <div class="search-wrap">
-                <input type="text">
-                <button>搜索</button>
+                <input type="text"><button>搜索</button>
             </div>
         </div>
-        <div class="content"></div>
-        <div class="footer"></div>
+        <div class="content">
+            <div class="star-top">
+                <div class="star-content">
+                    <div class="star-intro">
+                        <span>刘德华</span>
+                        <p>演员、歌手、香港“四大天王”之一</p>
+                        <p>1961年09月27日（57岁）</p>
+                    </div>
+                    <div class="star-img">
+                        <img src="https://ims-cdn0.sm.cn/ims?kt=MD5&at=smk&key=87ECEDE6E386C4C1C074447595BE7C33&tv=0_0&x.jpg"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <div class="item-btn">
+                    <a href="#">主页</a>
+                </div>
+                <div class="item-btn">
+                    <a href="#">人物介绍</a>
+                </div>
+                <div class="item-btn">
+                    <a href="#">影视作品</a>
+                </div>
+                <div class="item-btn">
+                    <a href="#">音乐作品</a>
+                </div>
+                <div class="item-btn">
+                    <a href="#">视频</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="baike-intro">
+                <div class="baike-intro-content">
+                    <span>百科</span>
+                    <span>刘德华（Andy
+                        Lau），1961年9月出生于香港，演员、歌手、词作人、制片人、电影人，影视歌多栖发展的代表艺人之一。1982年刘德华以全优成绩毕业于TVB艺训班签约出道，同年凭《猎鹰》走红，1983年主演《神雕侠侣》在香港创62点收视纪录，后因拒签五年长约被TVB雪藏。1982年初涉影坛，相继主演《投奔怒海》、《法外情》、《天若有情》、《暗战》、《无间道》、《盲探》等电影。至2014年已获3届香港电影金像奖最佳男主角奖、2届台湾电影金马奖最佳男主角奖，2005年获颁香港院线“1985-2005年全港最高累积票房香港男演员”奖，2006年被授予香港演艺学院荣誉院士。1991年刘德华创办电影公司，2005年发起亚洲新星导计划，其出品电影《香港制造》、《疯狂的石头》等受到关注。2005年成为华语电影传媒大奖中国电影百年形象大使，2006年获釜山国际电影节亚洲最有贡献电影人大奖，2012-2013年出任第49届台湾电影金马奖及第七届亚洲电影大奖评审团主席。1990年刘德华凭专辑《可不可以》走红歌坛，演唱过《忘情水》、《中国人》、《今天》等歌曲。2000年成为吉尼斯世界纪录中获奖最多的香港男歌手。至2014年六度获得十大劲歌金曲最受欢迎男歌星奖，已发行正式专辑近50张，唱片总数愈100张。刘德华热心公益慈善，1994年创立“刘德华慈善基金会”，2000年被评为“世界十大杰出青年”，2008年被委任香港非官守太平绅士，2010年获颁“世界杰出华人奖”，同年起任中国残疾人福利基金会理事并担任副理事长。</span>
+                </div>
+                <div class="font-logo">
+                    <a href="#">></a>
+                </div>
+            </div>
+            <div class="basis-info">
+                <span>基础信息：</span>
+                <span>1.74 米，68.0 kg，
+                    <a href="#">天枰座</a>，
+                    <a href="#">AB型</a>
+                </span>
+            </div>
+            <div class="info all-font">
+                <span>性别：</span>
+                <span>男</span>
+            </div>
+            <div class="adv"> 
+                <span>星揭秘 | &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;几分钟视频7分钟看完刘德华140部电影混剪合辑</span>
+            </div>
+
+            <div class="more-info">
+                <a href="#">查看更多信息 ></a>
+            </div>
+
+        </div>
     </div>
 </body>
 <script>
     var length = 10;
-    var fn = function(){
+    var fn = function () {
         console.log(this.length);
     }
     var obj = {
         length: 5,
-        method: function(fn){
+        method: function (fn) {
             fn();
             arguments[0]();
         }
     };
     obj.method(fn, 1);
-    var arr = [function(){console.log(this.length)},1]
+    var arr = [function () {
+        console.log(this.length)
+    }, 1]
 </script>
+
 </html>

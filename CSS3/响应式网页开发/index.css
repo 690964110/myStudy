@@ -1,0 +1,61 @@
+/* 
+    ---------------------媒体查询的第一种引入方式-----------------------
+    使用link标签外部引入、头部引入
+
+    ---------------------媒体查询的第二种引入方式-----------------------
+    样式标签引入
+    <style>
+        @import './index.css' screen and (max-width: 375px);
+    </style>
+
+    ---------------------媒体查询的第三种引入方式-----------------------
+    css代码中引入，媒体查询不占用权重
+    一般将媒体查询放最后，以免被后面的样式覆盖
+    媒体查询中的权重和外面的权重相同
+     @media screen and (max-width: 375px){
+            html,body{
+                width: 100%;
+                padding:100%;
+                background-color: red;
+            }
+        }
+    and 代表并且
+    ,   代表或者
+    not 除了这个条件的
+    @media not screen and (max-width: 375px) ,  (min-width: 300px){
+            html,body{
+                width: 100%;
+                padding:100%;
+                background-color: red;
+            }
+        }
+*/
+/* .wrapper{
+    background-color: aqua;
+} */
+/* 
+    适用场景，将属性写进媒体查询当中去  
+
+    rem 代表的跟标签的font-size值
+    em 相对本身的font-size值 font-size属性是可以继承的
+    vw：将视口的宽度均分为100分。（相对于视口而言 会把视口分成100分）
+    vh：监视口的高度均分为100份
+    vmax: 取视口宽高中最大的一边分成100份
+    vmin: 取视口款高中最小的一份分成100份
+*/
+:root{
+    font-size: 14px;
+}
+.wrapper{
+    border: 1px solid black;
+    display: flex;
+    width: 10rem;
+    height: 900px;
+    box-sizing: border-box;
+}
+.demo{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}

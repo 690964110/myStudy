@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+/* 
+    ---------------skew--------------------
+    body里面的内容是设置3d效果
+    skew(0deg, 0deg)    
+    skewX(10deg)    x方向开始倾斜，y坐标系被拉伸
+    skewY(10deg)    y方向开始倾斜，x坐标系被拉伸
+*/
+body{
+    perspective: 800px;
+    transform-style: preserve-3d;
+    perspective-origin: 300px 300px;
+}
+@keyframes skewMove{
+    from{
+        transform: skew(-45deg, -45deg);
+    }
+    50%{
+        transform: skew(0deg, 0deg);
+    }
+    to{
+        transform: skew(45deg, 45deg);
+    }
+}
+
+div{
+    width: 200px;
+    height:200px;
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    transform-origin: 0 0;
+    background-image: url(../img/5.jpg);
+    background-size: 100% 100%;
+    transform: skew(0deg, 0deg);
+    /* animation: skewMove 4s cubic-bezier(0,0,1,1) infinite alternate; */
+}

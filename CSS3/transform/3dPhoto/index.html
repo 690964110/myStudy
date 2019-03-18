@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="../../img/1.jpg" alt="">
+        <img src="../../img/2.jpg" alt="">
+        <img src="../../img/3.jpg" alt="">
+        <img src="../../img/4.jpg" alt="">
+        <img src="../../img/5.jpg" alt="">
+        <img src="../../img/6.jpg" alt="">
+        <img src="../../img/7.jpg" alt="">
+        <img src="../../img/8.jpg" alt="">
+    </div>
+</body>
+<script>
+    document.body.onmousemove = function (e) {
+        this.style.perspectiveOrigin = "" + e.pageX + 'px '
+            + e.pageY + 'px';
+    }
+    var oWrap = document.getElementsByClassName('wrapper')[0];
+    var oImg = document.getElementsByTagName('img');
+    var len = oImg.length;
+    for (var i = 0; i < len; i++) {
+        oImg[i].onclick = function (e) {
+            var item = e.target;
+            var flag = item.getAttribute("data-flag");
+            if (flag == "false" || flag == undefined) {
+                oWrap.style.animation = "";
+                item.style.width = '400px';
+                item.style.height = '400px';
+                item.setAttribute("data-flag", true);
+            } else {
+                item.style.width = '200px';
+                item.style.height = '200px';
+                item.setAttribute("data-flag", false);
+            }
+
+        }
+    }
+
+</script>
+
+</html>

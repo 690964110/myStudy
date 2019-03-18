@@ -1,0 +1,154 @@
+*{
+    margin:0;
+    padding:0;
+}
+/* 
+    -------------steps---------------
+    steps(count，end)
+    每个动画结束的时候使用多少帧
+    end:保留当前帧状态，直到动画结束（搭配forwards可以看到最后一帧）
+    start:保留下一帧状态，知道动画结束
+    steps(1,start) === step-start;
+    steps(1,end) === step-end;
+*/
+/* @keyframes change-color{
+    from{
+        background-color: yellow;
+    }
+    25%{
+        background-color: blue;
+    }
+    50%{
+        background-color: blueviolet;
+    }
+    75%{
+        background-color: greenyellow;
+    }
+    to{
+        background-color: goldenrod;
+    }
+}
+div{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    animation: change-color 4s steps(1, end);
+} */
+
+/* ------------打字效果demo------------------ */
+/* @keyframes cursor{
+    from{
+        border-left-color: rgba(0,0,0,0);
+    }
+    50%{
+        border-left-color: rgba(0,0,0,1);
+    }
+    to{
+        border-left-color: rgba(0,0,0,0);
+    }
+}
+@keyframes cover{
+    from{
+        left: 0;
+    }
+    to{
+        left: 100%;
+    }
+}
+div{
+    height:100px;
+    font-family: monospace;
+    display: inline-block;
+    font-size: 80px;
+    line-height: 100px;
+    position: relative;
+}
+div::after{
+    content: "";
+    position: absolute;
+    height: 90px;
+    width: 100%;
+    top: 10px;
+    left: 0;
+    background-color: #fff;
+    border-left: 2px solid black;
+    box-sizing: border-box;
+    animation: cursor 1s steps(1, end) infinite, cover 10s steps(10 ,end) forwards;
+} */
+/* ---------------clock-demo-------------- */
+/* @keyframes secondMove{
+    from{
+        transform: rotate(180deg);
+    }
+    to{
+        transform: rotate(540deg);
+    }
+}
+div.clock{
+    position: relative;
+    width: 512px;
+    height:512px;
+    background-image: url(../img/clock.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div.second{
+    position: absolute;
+    top: 180px;
+    left: 246.5px;
+    width: 16px;
+    height:278px;
+    background-image: url(../img/second.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 3;
+    transform-origin: center 76px;
+    transform: rotate(180deg);
+    animation: secondMove 60s steps(60 ,end) forwards infinite;
+}
+div.minute{
+    position: absolute;
+    top: 239px;
+    left: 239.5px;
+    width: 32px;
+    height:218px;
+    background-image: url(../img/minute.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+    transform-origin: center 16px;
+    transform: rotate(180deg);
+    animation: secondMove 3600s steps(60,end) forwards infinite;
+}
+div.hour{
+    position: absolute;
+    top: 238px;
+    left: 239.5px;
+    position: relative;
+    width: 32px;
+    height:148px;
+    background-image: url(../img/hour.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    animation: secondMove (60*60*60)s steps(1 ,end) forwards infinite;
+} */
+/* -------------------跑马-demo--------------------- */
+@keyframes hourseRun {
+    from{
+        background-position: 0 0;
+    }
+    to{
+        background-position: -2400px 0;
+    }
+}
+div{
+    width:200px;
+    height: 100px;
+    background-image: url(../img/horse.png);
+    background-size: cover;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    animation: hourseRun .5s steps(12, end) forwards infinite;
+}
